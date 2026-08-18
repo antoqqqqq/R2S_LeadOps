@@ -7,8 +7,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.example.r2s_leadops.service.JwtService;
-import org.example.r2s_leadops.service.CustomUserDetailsService;
+import org.example.r2s_leadops.service.imp.JwtServiceImp;
+import org.example.r2s_leadops.service.imp.CustomUserDetailsServiceImp;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,8 +26,8 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private final JwtService jwtService;
-    private final CustomUserDetailsService userDetailsService;
+    private final JwtServiceImp jwtService;
+    private final CustomUserDetailsServiceImp userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,

@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 
@@ -19,14 +21,19 @@ public class Campaign {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Size(max = 50)
+    @Column(name = "code", length = 50)
+    private String code;
+
     @Size(max = 100)
     @NotNull
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     @JoinColumn(name = "course_id")
-    private Cours course;
+    private Course course;
 
     @Column(name = "start_date")
     private LocalDate startDate;
@@ -47,8 +54,9 @@ public class Campaign {
     private String utmCampaign;
 
     @Size(max = 20)
+    @NotNull
     @ColumnDefault("'ACTIVE'")
-    @Column(name = "status", length = 20)
+    @Column(name = "status", nullable = false, length = 20)
     private String status;
 
 

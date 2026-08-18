@@ -1,4 +1,4 @@
-package org.example.r2s_leadops.DTO.request;
+package org.example.r2s_leadops.DTO.response;
 
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;

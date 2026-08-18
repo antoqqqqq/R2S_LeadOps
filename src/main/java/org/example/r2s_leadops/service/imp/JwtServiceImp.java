@@ -1,4 +1,4 @@
-package org.example.r2s_leadops.service;
+package org.example.r2s_leadops.service.imp;
 
 import org.example.r2s_leadops.config.JwtProperties;
 import org.example.r2s_leadops.entity.User;
@@ -24,7 +24,7 @@ import java.util.UUID;
  */
 @Service
 @RequiredArgsConstructor
-public class JwtService {
+public class JwtServiceImp {
 
     private final JwtProperties jwtProperties;
     private static final SecureRandom SECURE_RANDOM = new SecureRandom();
@@ -40,7 +40,7 @@ public class JwtService {
         return Jwts.builder()
                 .subject(user.getId().toString())
                 .claim("email", user.getEmail())
-                .claim("role", user.getRole().getName())
+                .claim("role", user.getRole().getCode().name())
                 .claim("full_name", user.getFullName())
                 .issuedAt(Date.from(now))
                 .expiration(Date.from(expiry))
@@ -59,6 +59,12 @@ public class JwtService {
 
     public UUID extractUserId(Claims claims) {
         return UUID.fromString(claims.getSubject());
+    }
+    public String extractEmail(Claims claims){
+        return claims.get("email", String.class);
+    }
+    public String extractRole(Claims claims){
+        return claims.get("role", String.class);
     }
 
     /** Sinh chuoi random dung lam gia tri refresh token / reset-password token tra ve cho client. */

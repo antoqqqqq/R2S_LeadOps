@@ -1,6 +1,7 @@
 package org.example.r2s_leadops.config;
 
 import lombok.RequiredArgsConstructor;
+import org.example.r2s_leadops.service.imp.CustomUserDetailsServiceImp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -29,7 +30,7 @@ import java.util.List;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-    private final org.example.r2s_leadops.service.CustomUserDetailsService customUserDetailsService;
+    private final CustomUserDetailsServiceImp customUserDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {

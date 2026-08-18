@@ -11,7 +11,7 @@ import org.hibernate.annotations.ColumnDefault;
 @Setter
 @Entity
 @Table(name = "courses")
-public class Cours {
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -31,8 +31,9 @@ public class Cours {
     private String description;
 
     @Size(max = 20)
+    @NotNull
     @ColumnDefault("'ACTIVE'")
-    @Column(name = "status", length = 20)
+    @Column(name = "status", nullable = false, length = 20)
     private String status;
 
 

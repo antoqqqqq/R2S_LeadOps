@@ -1,4 +1,4 @@
-package org.example.r2s_leadops.DTO.response;
+package org.example.r2s_leadops.DTO.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

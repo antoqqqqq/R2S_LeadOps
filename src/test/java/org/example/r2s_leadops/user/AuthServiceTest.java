@@ -1,7 +1,7 @@
 package org.example.r2s_leadops.user;
 
-import org.example.r2s_leadops.DTO.response.RegisterRequest;
-import org.example.r2s_leadops.service.AuthService;
+import org.example.r2s_leadops.DTO.request.RegisterRequest;
+import org.example.r2s_leadops.service.imp.AuthServiceImp;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -16,6 +16,6 @@ class AuthServiceTest {
         request.setPassword("123456");
 
         assertNotNull(request);
-        assertNotNull(AuthService.class);
+        assertNotNull(AuthServiceImp.class);
     }
 }

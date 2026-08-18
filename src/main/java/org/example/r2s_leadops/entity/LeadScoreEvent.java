@@ -21,10 +21,16 @@ public class LeadScoreEvent {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "lead_id")
-    private Lead lead;
+    @JoinColumn(name = "opportunity_id", nullable = false)
+    private LeadOpportunity opportunity;
+
+    @Size(max = 20)
+    @NotNull
+    @Column(name = "score_type", nullable = false, length = 20)
+    private String scoreType;
 
     @Size(max = 50)
     @Column(name = "rule_code", length = 50)
@@ -41,8 +47,9 @@ public class LeadScoreEvent {
     @Column(name = "score_after", nullable = false)
     private Integer scoreAfter;
 
+    @NotNull
     @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_at")
+    @Column(name = "created_at", nullable = false)
     private Instant createdAt;
 
 

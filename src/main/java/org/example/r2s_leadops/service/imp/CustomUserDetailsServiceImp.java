@@ -1,4 +1,4 @@
-package org.example.r2s_leadops.service;
+package org.example.r2s_leadops.service.imp;
 
 import org.example.r2s_leadops.entity.User;
 import org.example.r2s_leadops.repository.UserRepository;
@@ -8,11 +8,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsServiceImp implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public CustomUserDetailsService(UserRepository userRepository) {
+    public CustomUserDetailsServiceImp(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
