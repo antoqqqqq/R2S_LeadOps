@@ -7,6 +7,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -48,6 +49,10 @@ public class JwtServiceImp {
                 .signWith(signingKey())
                 .compact();
     }
+    public Claims extractClaims(Authentication authentication) {
+        String token = authentication.getCredentials().toString();
+        return parseAndValidate(token);
+    }
 
     public Claims parseAndValidate(String token) throws JwtException {
         return Jwts.parser()
@@ -57,9 +62,7 @@ public class JwtServiceImp {
                 .getPayload();
     }
 
-    public UUID extractUserId(Claims claims) {
-        return UUID.fromString(claims.getSubject());
-    }
+    public Integer  extractUserId(Claims claims) { return Integer.valueOf(claims.getSubject()); }
     public String extractEmail(Claims claims){
         return claims.get("email", String.class);
     }

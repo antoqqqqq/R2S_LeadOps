@@ -33,7 +33,7 @@ public class LeadResponse {
     private Integer intentScore;
     private Integer totalScore;
     private LeadStage leadStage;
-    private Long ownerId;
+    private Integer ownerId;
     private String ownerName;
     private Instant lastActivityAt;
     private Instant nextActionAt;

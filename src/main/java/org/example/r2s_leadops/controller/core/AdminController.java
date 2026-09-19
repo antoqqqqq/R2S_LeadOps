@@ -33,6 +33,7 @@ public class AdminController {
             @RequestParam(required = false) UserRole role,
             @RequestParam(required = false) UserStatus status,
             @RequestParam(required = false) String search) {
+        System.out.println("=== CONTROLLER REACHED ===");
 
         return ResponseEntity.ok(adminService.getUsers(page, size, role, status, search));
     }
